@@ -29,6 +29,14 @@
             background-color: f5f5f5;
         }
 
+        .music-player {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 20px;
+            z-index: 1;
+        }
+
         .background-video {
             position: fixed;
             top: 0;
@@ -63,6 +71,7 @@
             transition: all 0.3s ease;
             max-width: 90%;
             width: 400px;
+            margin-bottom: 106px; /* 86px(播放器高度) + 20px(间距) */
         }
 
         .input-group {
@@ -235,6 +244,10 @@
         <div class="attempts-left" id="attemptsLeft">剩余尝试次数: 5</div>
     </div>
 
+    <div class="music-player">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1456890009&auto=1&height=66"></iframe>
+    </div>
+
     <div class="content" id="content">
         <video class="content-video" controls>
             <source src="https://wsbb.us.kg/1.mp4" type="video/mp4">
@@ -254,6 +267,7 @@
             const inputContainer = document.querySelector('.input-container');
             const content = document.getElementById('content');
             const loading = document.querySelector('.loading');
+            const musicPlayer = document.querySelector('.music-player');
 
             let attempts = 5;
             let isLocked = false;
@@ -291,6 +305,7 @@
                 setTimeout(() => {
                     if (password === '54088') {
                         inputContainer.style.display = 'none';
+                        musicPlayer.style.display = 'none';
                         content.style.display = 'block';
                     } else {
                         attempts--;
@@ -330,6 +345,5 @@
             });
         });
     </script>
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1456890009&auto=1&height=66"></iframe>
 </body>
 </html>
