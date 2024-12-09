@@ -23,6 +23,7 @@
             padding: 0;
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             position: relative;
@@ -30,10 +31,10 @@
         }
 
         .music-player {
-            position: absolute;
+            position: fixed;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            margin-top: 20px;
             z-index: 1;
         }
 
@@ -71,7 +72,6 @@
             transition: all 0.3s ease;
             max-width: 90%;
             width: 400px;
-            margin-bottom: 106px; /* 86px(播放器高度) + 20px(间距) */
         }
 
         .input-group {
@@ -152,6 +152,7 @@
             max-width: 95%;
             width: 1000px;
             animation: fadeIn 0.5s ease;
+            margin-bottom: 120px; /* 为音乐播放器留出空间 */
         }
 
         .content-video {
@@ -217,6 +218,7 @@
             .content {
                 padding: 1.5rem;
                 margin: 1rem;
+                margin-bottom: 120px; /* 为音乐播放器留出空间 */
             }
         }
     </style>
@@ -244,16 +246,16 @@
         <div class="attempts-left" id="attemptsLeft">剩余尝试次数: 5</div>
     </div>
 
-    <div class="music-player">
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1456890009&auto=1&height=66"></iframe>
-    </div>
-
     <div class="content" id="content">
         <video class="content-video" controls>
             <source src="https://wsbb.us.kg/1.mp4" type="video/mp4">
             <source src="https://wsbb.us.kg/1.webm" type="video/webm">
         </video>
         <img src="https://wsbb.us.kg/1.jpg" alt="图片">
+    </div>
+
+    <div class="music-player">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1456890009&auto=1&height=66"></iframe>
     </div>
 
     <script>
@@ -305,7 +307,6 @@
                 setTimeout(() => {
                     if (password === '54088') {
                         inputContainer.style.display = 'none';
-                        musicPlayer.style.display = 'none';
                         content.style.display = 'block';
                     } else {
                         attempts--;
